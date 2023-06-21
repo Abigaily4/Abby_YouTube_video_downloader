@@ -5,6 +5,9 @@ import os
 # Set page title
 st.set_page_config(page_title="YouTube Downloader")
 
+# Get the default download path (Downloads folder on your PC)
+download_path = os.path.expanduser("~/Downloads")
+
 # Define function to download YouTube video
 def download_video(video_url, video_format):
     try:
@@ -13,9 +16,6 @@ def download_video(video_url, video_format):
 
         # Get video stream with selected format
         stream = yt.streams.get_by_resolution(video_format)
-
-        # Get the default download path
-        download_path = os.path.expanduser("~/Downloads")
 
         # Download video to the specified path
         stream.download(output_path=download_path)
